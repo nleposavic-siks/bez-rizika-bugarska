@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-image: url("kesbek1.2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Content block (40% width) */
+      .content-box {
+        width: 40%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* Heading style */
+      .main-heading {
+        font-size: 92px;
+        font-weight: 900;
+        color: #ffffff;
+        text-shadow: 0 0 18px rgba(0, 123, 255, 1),
+          0 0 32px rgba(0, 123, 255, 0.8);
+        margin-bottom: 0;
+      }
+
+      /* Simple description text */
+      .desc-text {
+        font-size: 22px;
+        font-weight: 500;
+        color: white;
+        line-height: 1.4;
+      }
+
+      /* Button */
+      .cta-btn2 {
+        padding: 20px 50px;
+        font-size: 32px;
+        font-weight: 700;
+        background: #ffcb05;
+        color: #000;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        text-decoration: none;
+        width: fit-content;
+        box-shadow: 0 0 14px rgba(0, 123, 255, 0.8);
+        transition: 0.2s ease;
+      }
+
+      .cta-btn2:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 22px rgba(0, 123, 255, 1);
+      }
+      /* Countdown timer bottom-right */
+      #countdown {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 18px 50px;
+        font-size: 36px;
+        font-weight: 700;
+        border-radius: 60px;
+        font-family: monospace;
+        box-shadow: 0 0 14px rgba(0, 123, 255, 0.8);
+      }
+
+      /* Navbar styles */
+      nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 40px;
+        background: rgba(0, 0, 0, 0.25);
+        box-sizing: border-box;
+        z-index: 1000;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        padding: 6px 12px;
+        border-radius: 6px;
+      }
+
+      nav ul li a:hover {
+        background: rgba(255, 203, 5, 0.8);
+        color: #000;
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background-image: url("kesbek2.2.jpg");
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-top: 40px;
+        }
+        .main-heading {
+          font-size: 80px; /* already smaller for mobile */
+          line-height: 0.95; /* reduces the space between the two lines */
+        }
+        .desc-text {
+          font-size: 22px; /* keep it readable on mobile */
+          line-height: 1.4;
+          white-space: normal; /* allow normal wrapping */
+          width: 95%; /* wider container, almost full width */
+          margin: 10px auto; /* center it horizontally */
+        }
+        .content-box {
+          width: 90%;
+        }
+        .cta-btn2 {
+          position: absolute;
+          bottom: 40px; /* distance from bottom of the screen */
+          left: 50%; /* center horizontally */
+          transform: translateX(-50%);
+          font-size: 18px; /* smaller font for mobile */
+          padding: 16px 40px; /* adjust padding for mobile */
+        }
+
+        #countdown {
+          position: absolute;
+          bottom: 40px; /* same vertical alignment as button */
+          left: 87%; /* slightly to the right of button */
+          transform: translateX(-50%);
+          font-size: 24px; /* smaller for mobile */
+          padding: 12px 50px;
+          display: flex; /* enable flex layout */
+          justify-content: center; /* center horizontally */
+          align-items: center; /* center vertically */
+          text-align: center; /* fallback for text */
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 15px 20px;
+        }
+
+        nav ul {
+          gap: 16px;
+        }
+
+        nav ul li a {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#list">List</a></li>
+      </ul>
+    </nav>
+    <div class="content-box">
+      <h1 class="main-heading">БЕЗ РИСК</h1>
+      <p class="desc-text">
+        КАЗИНО - 100% КЕШБЕК БОНУС <br />
+        ИГРАЙТЕ УВЕРЕНО <br />
+        ПЪРВИТЕ ВИ ЗАВЪРТАНИЯ СА БЕЗ РИСК!
+      </p>
+      <a href="#" class="cta-btn2"> играй сега</a>
+    </div>
+    <div id="countdown">18:00</div>
+    <script>
+      let totalSeconds = 18 * 60;
+      const countdownEl = document.getElementById("countdown");
+
+      const timerInterval = setInterval(() => {
+        let minutes = Math.floor(totalSeconds / 60);
+        let seconds = totalSeconds % 60;
+        countdownEl.textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+        totalSeconds--;
+
+        if (totalSeconds < 0) {
+          clearInterval(timerInterval);
+          countdownEl.textContent = "00:00";
+        }
+      }, 1000);
+
+      // Rotating button links
+      const links = [
+        "https://example1.com",
+        "https://example2.com",
+        "https://example3.com",
+        "https://example4.com",
+      ];
+
+      const btn = document.querySelector(".cta-btn2");
+      let index = 0;
+
+      setInterval(() => {
+        index = (index + 1) % links.length;
+        btn.href = links[index];
+      }, 3000); // changes link every 3 seconds
+    </script>
+  </body>
+</html>
