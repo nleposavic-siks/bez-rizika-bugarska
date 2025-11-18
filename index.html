@@ -9,8 +9,9 @@
       body {
         margin: 0;
         padding: 0;
-        height: 100vh;
         width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -18,10 +19,16 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        position: relative;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
+        overflow: hidden;
       }
 
+      html {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+      }
       /* Content block (40% width) */
       .content-box {
         width: 40%;
@@ -35,7 +42,7 @@
 
       /* Heading style */
       .main-heading {
-        font-size: 92px;
+        font-size: 102px;
         font-weight: 900;
         color: #ffffff;
         text-shadow: 0 0 18px rgba(0, 123, 255, 1),
@@ -45,7 +52,7 @@
 
       /* Simple description text */
       .desc-text {
-        font-size: 22px;
+        font-size: 28px;
         font-weight: 500;
         color: white;
         line-height: 1.4;
@@ -73,9 +80,6 @@
       }
       /* Countdown timer bottom-right */
       #countdown {
-        position: absolute;
-        bottom: 30px;
-        right: 30px;
         background: rgba(0, 0, 0, 0.6);
         color: #fff;
         padding: 18px 50px;
@@ -84,6 +88,10 @@
         border-radius: 60px;
         font-family: monospace;
         box-shadow: 0 0 14px rgba(0, 123, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
       }
 
       /* Navbar styles */
@@ -131,6 +139,9 @@
           flex-direction: column;
           justify-content: flex-start;
           padding-top: 40px;
+          background-size: cover;
+          background-position: center;
+          overflow: hidden;
         }
         .main-heading {
           font-size: 80px; /* already smaller for mobile */
@@ -148,38 +159,74 @@
         }
         .cta-btn2 {
           position: absolute;
-          bottom: 40px; /* distance from bottom of the screen */
-          left: 50%; /* center horizontally */
+          bottom: 100px;
+          left: 50%;
           transform: translateX(-50%);
-          font-size: 18px; /* smaller font for mobile */
-          padding: 16px 40px; /* adjust padding for mobile */
+          font-size: 28px;
+          padding: 20px 90px;
+          white-space: nowrap; /* force text on one line */
         }
 
         #countdown {
           position: absolute;
-          bottom: 40px; /* same vertical alignment as button */
-          left: 87%; /* slightly to the right of button */
+          bottom: 30px; /* below the button */
+          left: 50%; /* center horizontally */
           transform: translateX(-50%);
-          font-size: 24px; /* smaller for mobile */
-          padding: 12px 50px;
-          display: flex; /* enable flex layout */
-          justify-content: center; /* center horizontally */
-          align-items: center; /* center vertically */
-          text-align: center; /* fallback for text */
+          font-size: 28px; /* slightly bigger to match button */
+          padding: 16px 60px; /* match button width */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
         }
       }
 
       @media (max-width: 768px) {
         nav {
+          justify-content: space-between; /* logo left, hamburger right */
           padding: 15px 20px;
         }
 
-        nav ul {
-          gap: 16px;
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 30px;
+          height: 22px;
+          cursor: pointer;
         }
 
-        nav ul li a {
-          font-size: 16px;
+        .hamburger span {
+          display: block;
+          height: 4px;
+          width: 100%;
+          background: #fff;
+          border-radius: 2px;
+        }
+
+        #nav-links {
+          position: absolute;
+          top: 60px; /* below navbar */
+          left: 0;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          flex-direction: column;
+          display: none; /* hidden by default */
+          align-items: center;
+          padding: 20px 0;
+          gap: 16px;
+          z-index: 999;
+        }
+
+        #nav-links li a {
+          font-size: 18px;
+          color: #fff;
+          padding: 8px 16px;
+        }
+
+        /* Show menu when active */
+        #nav-links.active {
+          display: flex;
         }
       }
     </style>
@@ -188,7 +235,12 @@
   <body>
     <!-- Navbar -->
     <nav>
-      <ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -204,8 +256,9 @@
         ПЪРВИТЕ ВИ ЗАВЪРТАНИЯ СА БЕЗ РИСК!
       </p>
       <a href="#" class="cta-btn2"> играй сега</a>
+      <div id="countdown">18:00</div>
     </div>
-    <div id="countdown">18:00</div>
+
     <script>
       let totalSeconds = 18 * 60;
       const countdownEl = document.getElementById("countdown");
@@ -239,6 +292,14 @@
         index = (index + 1) % links.length;
         btn.href = links[index];
       }, 3000); // changes link every 3 seconds
+    </script>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
     </script>
   </body>
 </html>
